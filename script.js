@@ -23,9 +23,9 @@ class Player {
     update() {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
-        if (this.position.y + this.height + this.velocity.y <= canvas.height)
+        //if (this.position.y + this.height + this.velocity.y <= canvas.height)
             this.velocity.y += gravity
-        else this.velocity.y = 0
+        //else this.velocity.y = 0
         this.draw()
     }
 }
@@ -46,15 +46,27 @@ class Platform {
         this.draw()
     }
 }
+class GenericObject {
+    constructor(x, y, img) {
+        this.position = {
+            x,
+            y,
+        }
+        this.img = img;
+    }
+    draw() {
+        c.drawImage(this.img, this.position.x, this.position.y)
+    }
 
+}
+
+let background = new GenericObject(0, 0, createImage('assests/Stages/Stage_2.png'));
 let player = new Player()
 let platforms = []
-platforms.push(new Platform(100, 300))
-platforms.push(new Platform(300, 100))
-platforms.push(new Platform(500, 200))
-platforms.push(new Platform(700, 400))
-platforms.push(new Platform(800, 300))
-platforms.push(new Platform(1000, 500))
+for (let i = 0; i < 50; i++) {
+    platforms.push(new Platform(i * 200, Math.random() * 300 + 100))
+}
+
 let keys = {
     right: {
         pressed: false
@@ -63,25 +75,44 @@ let keys = {
         pressed: false
     }
 }
-
+function createImage(imageSrc) {
+    const image = new Image()
+    image.src = imageSrc;
+    return image
+}
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
+    background.draw()
     player.update();
-    platforms.forEach(platform => {platform.update();
-        if (keys.right.pressed && player.position.x < 450) player.velocity.x = 5
-        else if (keys.left.pressed && player.position.x > 150) player.velocity.x = -5
-        else { 
-            player.velocity.x = 0 
-            if (keys.right.pressed) platform.position.x -= 5;
-            else if(keys.left.pressed) platform.position.x += 5;
+    platforms.forEach(platform => {
+        platform.update();
+    })
+    if (keys.right.pressed && player.position.x < 450) player.velocity.x = 5
+    else if (keys.left.pressed && player.position.x > 150) player.velocity.x = -5
+    else {
+        player.velocity.x = 0
+        if (keys.right.pressed) {
+            platforms.forEach(platform => {
+                platform.position.x -= 5
+            })
+            background.position.x -= 2
         }
-    
+        else if (keys.left.pressed) {
+            platforms.forEach(platform => {
+                platform.position.x += 5
+            })
+            background.position.x += 2
+
+        }
+    }
+    platforms.forEach(platform => {
         if (player.position.y + player.height <= platform.position.y
             && player.position.y + player.height + player.velocity.y >= platform.position.y
             && player.position.x + player.width >= platform.position.x
             && player.position.x <= platform.position.x + platform.width)
-            player.velocity.y = 0;})
+            player.velocity.y = 0;
+    })
 }
 animate()
 
