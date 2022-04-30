@@ -54,11 +54,11 @@ function nxt(){
         while(prev == next){
         next = (Math.floor(Math.random() * 4))+1;
         }
-        sub = 0;
+        sub = 2;
     }
     else if (sub == 1){
         score = 0;
-        sub = 0;
+        sub = 2;
     }
 }
 
@@ -88,9 +88,11 @@ function animate(){
     c.drawImage(background, 0, 0, canvas.width, canvas.height);
     characterstate();
     printscore();
+    if (sub == 0){
     c.fillStyle = 'black';
     c.font = "40px ComicSans";
     c.fillText("Break A Leg", 350, 400);
+    }
     nxt();
     arrows();
     requestAnimationFrame(animate);
