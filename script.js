@@ -23,7 +23,8 @@ var state = 0;
 var next = 1;
 var score = 0;
 var sub = 0;
-prev = 0;
+var prev = 0;
+var oogabooga = 0;
 
 
 function characterstate(){
@@ -47,7 +48,7 @@ function characterstate(){
 function nxt(){
     if (score > 9){
         c.drawImage(A, 970, 210, 70, 60);
-        c.drawImage(A, 1530, 210, 70, 60);  
+        c.drawImage(A, 1530, 210, 70, 60);
     }
     else if (state == next && sub == 1){
         score ++;
