@@ -5,19 +5,6 @@ canvas.width = 240*8;
 canvas.height = 96*8;
 const background = new Image();
 background.src = 'assests/stage_1.png';
-<<<<<<< Updated upstream
-
-
-// function animate(){
-background.addEventListener('load', e => {
-    c.drawImage(background, 0, 0, canvas.width, canvas.height);
-});
-
-//   c.fillStyle = 'blue'
-//   c.fillRect(100,100,100,100)
-//     requestAnimationFrame(animate);
-// }
-=======
 const up = new Image();
 up.src =  'assests/MainCup.png';
 const down = new Image();
@@ -76,18 +63,18 @@ function nxt(){
 }
 
 function arrows(){
-    c.fillStyle = 'red';
+    c.fillStyle = 'rgba(192,80,77,0.7)';
     if(next == 1){
-    c.fillRect(260, 130, 40, 40);
+    c.fillRect(232, 48, 128, 128);
     }
     else if(next == 2){
-    c.fillRect(150, 230, 40, 40);
+    c.fillRect(88, 192, 128, 128);
     }
     else if(next == 3){
-        c.fillRect(260, 230, 40, 40);
+        c.fillRect(232, 192, 128, 128);
     }
     else if(next == 4){
-        c.fillRect(430, 230, 40, 40);
+        c.fillRect(376, 192, 128, 128);
     }
 }
 
@@ -135,4 +122,3 @@ function animate(){
             break;
      }
  })
->>>>>>> Stashed changes
