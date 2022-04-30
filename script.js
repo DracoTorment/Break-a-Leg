@@ -49,5 +49,40 @@ platform.draw()
 
 function animate() {
     requestAnimationFrame(animate)
-    
+
 }
+animate()
+
+addEventListener('keydown', ({ key }) => {
+    switch (key) {
+        case 'a':
+            console.log('left')
+            break
+        case 's':
+            console.log('down')
+            break
+        case 'd':
+            console.log('right')
+            break
+        case 'w':
+            console.log('up')
+            break
+    }
+})
+
+addEventListener('keyup', ({ key }) => {
+    switch (key) {
+        case 'a':
+            console.log('left')
+            break
+        case 's':
+            console.log('down')
+            break
+        case 'd':
+            console.log('right')
+            break
+        case 'w':
+            console.log('up')
+            break
+    }
+})
