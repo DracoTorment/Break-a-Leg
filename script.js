@@ -1,7 +1,7 @@
 // The attributes of the player.
 var player = {
-    x: 20,
-    y: 20,
+    x: 200,
+    y: 200,
     x_v: 0,
     y_v: 0,
     jump : true,
@@ -17,16 +17,14 @@ var keys = {
 // The friction and gravity to show realistic movements    
 var gravity = 0.6;
 var friction = 0.7;
-//winconditions
-var win = 0;
 // The number of platforms
 var num = 2;
 // The platforms
 var platforms = [];
 // Function to render the canvas
 function rendercanvas(){
-    var img = document.getElementById("stage");
-    ctx.drawImage(img,240,96);
+    ctx.fillStyle = "#F0F8FF";
+    ctx.fillRect(0, 0, 270, 270);
 }
 // Function to render the player
 function renderplayer(){
@@ -124,8 +122,8 @@ function loop() {
 }
 canvas=document.getElementById("canvas");
 ctx=canvas.getContext("2d");
-ctx.canvas.height = 98;
-ctx.canvas.width = 242;
+ctx.canvas.height = 270;
+ctx.canvas.width = 270;
 createplat();
 // Adding the event listeners
 document.addEventListener("keydown",keydown);
