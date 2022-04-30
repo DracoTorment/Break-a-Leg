@@ -3,7 +3,6 @@ let c = canvas.getContext('2d')
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
-<<<<<<< Updated upstream
 class Player {
     constructor() {
         this.position = {
@@ -87,7 +86,7 @@ addEventListener('keyup', ({ key }) => {
             break
     }
 })
-=======
+
 canvas.width = 240*8;
 canvas.height = 96*8;
 const background = new Image();
@@ -139,4 +138,4 @@ function animate(){
  addEventListener('keydown', ({keyCode}) => {
      console.log(keyCode)
  })
->>>>>>> Stashed changes
+
